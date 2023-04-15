@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.game-text {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-size: 50px;
+    font-family: HElvetica;
+}
+
+.game-text > button {
+    padding: 1px 1px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.timer {
+    padding-top: 10px;
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.score {
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 30px;
+    margin-bottom: 3px;
+}
+
+.play > ul {
+    border: 1px solid #333;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.play > ul > li {
+    width: 100%;
+    height: 25px;
+}
+
+.play > ul > li > ul {
+    display: flex;
+}
+
+.play > ul > li > ul > li {
+    width: 25px;
+    height: 25px;
+    outline: 1px solid #ccc;
+}
+
+.square {
+    background: #4b89dc;
+}
+.bar {
+    background: salmon;
+}
+.tree {
+    background: #67c23a;
+}
+.zee {
+    background: #e6a23c;
+}
+.elLeft {
+    background: #8e44ad;
+}
+.elRight {
+    background: #16a085;
+}
