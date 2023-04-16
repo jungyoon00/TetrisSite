@@ -113,11 +113,17 @@ function checkMatch() {
             score += 1;
             scoreDisplay.innerText = score;
 
-            if (score > 10) {
+            if (score > 3) {
+                duration = 450;
+            } else if (score > 6) {
                 duration = 400;
-            } else if (score > 25) {
+            } else if (score > 9) {
+                duration = 350;
+            } else if (score > 12) {
                 duration = 300;
-            } else if (score > 40) {
+            } else if (score > 15) {
+                duration = 250;
+            } else if (score > 18) {
                 duration = 200;
             }
         }
