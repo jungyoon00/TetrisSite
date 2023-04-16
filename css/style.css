@@ -41,6 +41,7 @@ body {
     text-align: center;
     font-family: Helvetica;
     font-size: 20px;
+    color: white;
     font-weight: 200;
 }
 
@@ -48,10 +49,19 @@ body {
     text-align: center;
     font-family: Helvetica;
     font-size: 30px;
+    color: white;
     margin-bottom: 3px;
 }
 
+.best-score {
+    text-align: center;
+    font-family: Helvetica;
+    color: white;
+    margin-top: 10px;
+}
+
 .play > ul {
+    background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid #333;
     width: 250px;
     margin: 0 auto;

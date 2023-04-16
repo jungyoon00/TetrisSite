@@ -13,6 +13,7 @@ const GAME_COLS = 10;
 
 // variables
 let score = 0;
+let maxScore;
 let duration = 500;
 let downInterval;
 let tempMovingItem;
@@ -111,12 +112,19 @@ function checkMatch() {
 
             score += 1;
             scoreDisplay.innerText = score;
+
+            if (score > 10) {
+                duration = 400;
+            } else if (score > 25) {
+                duration = 300;
+            } else if (score > 40) {
+                duration = 200;
+            }
         }
     })
 }
 
 function generateNewBlock() {
-    changeDuration();
 
     clearInterval(downInterval);
     downInterval = setInterval(()=> {
@@ -161,16 +169,7 @@ function dropBlock() {
 
 function showGameOverText() {
     gameText.style.display = "flex";
-}
-
-function changeDuration() {
-    if (time > 60) {
-        duration = 400;
-    } else if (time > 120) {
-        duration = 250;
-    } else if (time > 180) {
-        duration = 100;
-    }
+    saveRecord();
 }
 
 function printTime() {
@@ -190,6 +189,24 @@ function stopTimer() {
     }
 }
 
+function saveRecord() {
+    maxScore = localStorage.getItem("maxScore");
+    if (maxScore === undefined) {
+        localStorage.setItem("maxScore", score);
+        return
+    }
+    if (score > maxScore) {
+        localStorage.setItem("maxScore", score);
+    }
+}
+
+function showRecord() {
+    const clientRecord = document.querySelector(".best-score");
+
+    maxScore = localStorage.getItem("maxScore");
+    clientRecord.innerText = maxScore;
+}
+
 function getTimeFormatString() {
     hour = parseInt(String(time / (60*60)));
     min = parseInt(String((time - (hour * 60 * 60)) / 60));
@@ -197,7 +214,6 @@ function getTimeFormatString() {
 
     return String(hour).padStart(2, '0') + ":" + String(min).padStart(2, '0') + ":" + String(sec).padStart(2, '0');
 }
-
 
 document.addEventListener("keydown", e=> {
     switch(e.keyCode){
@@ -225,10 +241,11 @@ restartButton.addEventListener("click", ()=> {
     stopTimer();
     play.innerHTML = "";
     gameText.style.display = "none";
-    init();
     score = 0;
     scoreDisplay.innerText = score;
     time = 0;
     timer.innerText = "00:00:00";
     duration = 500;
+    init();
+    showRecord();
 })

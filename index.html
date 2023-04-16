@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TETRIS</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-image: url("img/tetris.jpg");
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -13,10 +19,14 @@
             <button>RETRY</button>
         </div>
         <div class="timer">00:00:00</div>
-        <div style="text-align: center; font-family: HElvetica;">[Score]</div>
+        <div style="text-align: center; font-family: HElvetica; color: white">[Score]</div>
         <div class="score">0</div>
         <div class="play">
             <ul></ul>
+        </div>
+        <div>
+            <div style="text-align: center; font-family: Helvetica; color: white; margin-top: 25px;">BEST SCORE</div>
+            <div class="best-score"></div>
         </div>
     </div>
     <script src="js/tetris.js" type="module"></script>
