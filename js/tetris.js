@@ -14,7 +14,7 @@ const GAME_COLS = 10;
 // variables
 let score = 0;
 let maxScore;
-let duration = 500;
+let duration = 400;
 let downInterval;
 let tempMovingItem;
 
@@ -113,21 +113,30 @@ function checkMatch() {
             score += 1;
             scoreDisplay.innerText = score;
 
-            if (score > 3) {
-                duration = 450;
-            } else if (score > 6) {
-                duration = 400;
-            } else if (score > 9) {
-                duration = 350;
-            } else if (score > 12) {
-                duration = 300;
-            } else if (score > 15) {
-                duration = 250;
-            } else if (score > 18) {
-                duration = 200;
-            }
+            changeDuration();
         }
     })
+}
+
+function changeDuration() {
+    if (score > 30) {
+        duration = 100;
+    } else if (score > 25) {
+        duration = 150;
+    } else if (score > 20) {
+        duration = 200;
+    } else if (score > 15) {
+        duration = 250;
+    } else if (score > 10) {
+        duration = 300;
+    } else if (score > 5) {
+        duration = 350;
+    }
+    console.log(duration);
+    clearInterval(downInterval);
+    downInterval = setInterval(()=> {
+        moveBlock("top", 1);
+    }, duration)
 }
 
 function generateNewBlock() {
