@@ -7,6 +7,9 @@ const gameText = document.querySelector(".game-text");
 const scoreDisplay = document.querySelector(".score");
 const restartButton = document.querySelector(".game-text > button");
 
+const holdView = document.querySelector(".hold > ul");
+const nextBlockView = document.querySelector(".next-block > ul");
+
 // Setting
 const GAME_ROWS = 20;
 const GAME_COLS = 10;
@@ -36,6 +39,8 @@ function init() {
     for (let i = 0; i < GAME_ROWS; i++) {
         prependNewLine();
     }
+    makeHoldView();
+    makeNextBlockView();
     generateNewBlock();
 }
 
@@ -50,6 +55,32 @@ function prependNewLine() {
         }
         li.prepend(ul);
         play.prepend(li);
+}
+
+function makeHoldView() {
+    for (let i = 0; i < 3; i++) {
+        const li = document.createElement("li");
+        const ul = document.createElement("ul");
+        for (let j = 0; j < 3; j++) {
+            const matrix = document.createElement("li");
+            ul.prepend(matrix);
+        }
+        li.prepend(ul);
+        holdView.prepend(li);
+    }
+}
+
+function makeNextBlockView() {
+    for (let i = 0; i < 3; i++) {
+        const li = document.createElement("li");
+        const ul = document.createElement("ul");
+        for (let j = 0; j < 3; j++) {
+            const matrix = document.createElement("li");
+            ul.prepend(matrix);
+        }
+        li.prepend(ul);
+        nextBlockView.prepend(li);
+    }
 }
 
 function renderBlocks(moveType="") {
@@ -111,7 +142,7 @@ function checkMatch() {
             prependNewLine();
 
             score += 1;
-            scoreDisplay.innerText = score;
+            scoreDisplay.innerText = String(score).padStart(3, '0');
 
             changeDuration();
         }
