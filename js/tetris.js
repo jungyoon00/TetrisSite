@@ -10,6 +10,8 @@ const restartButton = document.querySelector(".game-text > button");
 const holdView = document.querySelector(".hold > ul");
 const nextBlockView = document.querySelector(".next-block > ul");
 
+const audio = document.querySelector(".audio");
+
 // Setting
 const GAME_ROWS = 20;
 const GAME_COLS = 10;
@@ -39,6 +41,11 @@ function init() {
     for (let i = 0; i < GAME_ROWS; i++) {
         prependNewLine();
     }
+    audio.autoplay = true;
+    audio.loop = true;
+    audio.volume = 0.2;
+    audio.play();
+
     makeHoldView();
     makeNextBlockView();
     generateNewBlock();
